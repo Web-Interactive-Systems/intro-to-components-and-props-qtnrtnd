@@ -18,13 +18,24 @@
 
  */
 
+ import { createElement, render } from './mini';
+
+
 /** @jsx createElement */
 function App() {
+  const h1 = <h1>Hello, World!</h1>;
+  const p = <p>My name is Alex Xela</p>;
+  
   const body = (
     <main>
-      <h1>Hello, here!</h1>
+      {h1}
+      {p}
     </main>
   );
 
   return body;
 }
+
+const rootElement = document.getElementById('app');
+const appComponent = <App />;
+render(appComponent, rootElement);

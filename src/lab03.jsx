@@ -17,6 +17,8 @@ Todo: Complete this code to render the following component.
  
  */
 
+ import { createElement, render } from './mini';
+
 const todos = [
   {
     id: 'todo-0',
@@ -30,14 +32,14 @@ const todos = [
   },
 ];
 
-function TodoItem() {
+function TodoItem(todo) {
   // returns an html li item with its name and status
 
-  return <></>;
+  return <li id={todo.id}>{todo.name} : {todo.status}</li>;
 }
 
 function TodoList() {
-  return <ul>{/* a list of TodoItem */}</ul>;
+  return <ul>{todos.map(TodoItem)}</ul>;
 }
 
 /** @jsx createElement */
@@ -45,8 +47,13 @@ function App() {
   const body = (
     <main>
       <h1>Hello List</h1>
+      <TodoList />
     </main>
   );
 
   return body;
 }
+
+const rootElement = document.getElementById('app');
+const appComponent = <App />;
+render(appComponent, rootElement);

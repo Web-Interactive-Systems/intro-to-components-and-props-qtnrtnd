@@ -17,15 +17,24 @@
 
  */
 
+ import { createElement, render } from './mini';
+
 /** @jsx createElement */
 function App() {
-  const list = [];
+  const list = ['item 1', 'item 2'];
 
   const body = (
     <main>
       <h1>Hello List</h1>
+      <ul>
+        {list.map((item) => <li>{item}</li>)}
+      </ul>
     </main>
   );
 
   return body;
 }
+
+const rootElement = document.getElementById('app');
+const appComponent = <App />;
+render(appComponent, rootElement);
